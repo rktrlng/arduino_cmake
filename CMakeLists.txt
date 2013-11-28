@@ -16,9 +16,9 @@ set(ARDUINO_VERSION 103)
 #                            START BOARD OPTIONS                               #
 ################################################################################
 
-# Supported BOARD_TYPE options: standard, rpi, leonardo, custom
-set(BOARD_TYPE standard)
-# For rpi, make sure you have Gordon's patched avrdude & wiringPi 'gpio' installed:
+# Supported BOARD_TYPE options: standard, gertboard, gertduino, leonardo, custom
+set(BOARD_TYPE gertduino)
+# For gertboard and gertduino, make sure you have Gordon's patched avrdude & wiringPi 'gpio' installed:
 # avrdude:	https://projects.drogon.net/raspberry-pi/gertboard/
 # gpio:		https://projects.drogon.net/raspberry-pi/wiringpi/
 
@@ -31,10 +31,19 @@ if (BOARD_TYPE MATCHES standard)
 	set(PORT /dev/ttyUSB0)
 	set(UPLOAD_RATE 57600)
 	set(MESSAGE 'upload with: make flash_*')
-elseif (BOARD_TYPE MATCHES rpi)
+elseif (BOARD_TYPE MATCHES gertboard)
 	set(BOARD_INCLUDE_DIR standard)
 	set(MCU atmega328p)
 	set(F_CPU 12000000)
+	add_definitions(-DUSB_VID=0x0000 -DUSB_PID=0x0000)
+	set(PROGRAMMER gpio)
+	set(PORT 0)				# unused, but must be set
+	set(UPLOAD_RATE 0)		# unused, but must be set
+	set(MESSAGE 'upload with: make gpio_*')
+elseif (BOARD_TYPE MATCHES gertduino)
+	set(BOARD_INCLUDE_DIR standard)
+	set(MCU atmega328p)
+	set(F_CPU 16000000)
 	add_definitions(-DUSB_VID=0x0000 -DUSB_PID=0x0000)
 	set(PROGRAMMER gpio)
 	set(PORT 0)				# unused, but must be set

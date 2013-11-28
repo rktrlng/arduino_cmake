@@ -34,8 +34,8 @@
  * Your arduino 'sketch' goes below
  * 
  */
-int led1 = 1;
-int led2 = 3;
+int led1 = 10;
+int led2 = 13;
 
 void setup() {
 	pinMode(led1, OUTPUT);
