@@ -31,4 +31,5 @@ include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/default/Wire/u
 add_subdirectory (blinky)
 add_subdirectory (combined)
 add_subdirectory (keyboard)
+add_subdirectory (ping)
 add_subdirectory (tinybasic)
