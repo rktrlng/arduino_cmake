@@ -46,11 +46,11 @@ void setup() {
 void loop() {
 	digitalWrite(led1, HIGH);
 	digitalWrite(led2, LOW);
-	Serial.write("high\r\n");
+	Serial.write("tick\r\n");
 	delay(500);
 
 	digitalWrite(led1, LOW);
 	digitalWrite(led2, HIGH);
-	Serial.write("low\r\n");
+	Serial.write("tock\r\n");
 	delay(500);
 }

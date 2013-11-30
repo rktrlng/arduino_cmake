@@ -15,10 +15,6 @@ Blinker::~Blinker()
 
 void Blinker::blink()
 {
-	if (_state==LOW) {
-		_state = HIGH;
-	} else {
-		_state = LOW;
-	}
+	_state = !_state;
 	digitalWrite(_pin, _state);
 }

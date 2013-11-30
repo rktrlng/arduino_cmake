@@ -30,7 +30,7 @@ if (BOARD_TYPE MATCHES standard)
 	set(PROGRAMMER stk500v1)
 	set(PORT /dev/ttyUSB0)
 	set(UPLOAD_RATE 57600)
-	set(MESSAGE 'upload with: make flash_*')
+	set(MESSAGE 'upload with: make flash_<projectname>')
 elseif (BOARD_TYPE MATCHES gertboard)
 	set(BOARD_INCLUDE_DIR standard)
 	set(MCU atmega328p)
@@ -39,7 +39,7 @@ elseif (BOARD_TYPE MATCHES gertboard)
 	set(PROGRAMMER gpio)
 	set(PORT 0)				# unused, but must be set
 	set(UPLOAD_RATE 0)		# unused, but must be set
-	set(MESSAGE 'upload with: make gpio_*')
+	set(MESSAGE 'upload with: make gpio_<projectname>')
 elseif (BOARD_TYPE MATCHES gertduino)
 	set(BOARD_INCLUDE_DIR standard)
 	set(MCU atmega328p)
@@ -48,7 +48,7 @@ elseif (BOARD_TYPE MATCHES gertduino)
 	set(PROGRAMMER gpio)
 	set(PORT 0)				# unused, but must be set
 	set(UPLOAD_RATE 0)		# unused, but must be set
-	set(MESSAGE 'upload with: make gpio_*')
+	set(MESSAGE 'upload with: make gpio_<projectname>')
 elseif(BOARD_TYPE MATCHES leonardo)
 	set(BOARD_INCLUDE_DIR leonardo)
 	set(MCU atmega32u4)
@@ -57,7 +57,7 @@ elseif(BOARD_TYPE MATCHES leonardo)
 	set(PROGRAMMER avr109)
 	set(PORT /dev/ttyACM0)
 	set(UPLOAD_RATE 57600)
-	set(MESSAGE 'upload with: make flash_*')
+	set(MESSAGE 'upload with: make flash_<projectname>')
 elseif(BOARD_TYPE MATCHES custom)
 	set(BOARD_INCLUDE_DIR leonardo)
 	set(MCU atmega32u4)
@@ -66,7 +66,7 @@ elseif(BOARD_TYPE MATCHES custom)
 	set(PROGRAMMER dfu)		# unused, but must be set
 	set(PORT 0)				# unused, but must be set
 	set(UPLOAD_RATE 0)		# unused, but must be set
-	set(MESSAGE 'upload with: make dfu_*')
+	set(MESSAGE 'upload with: make dfu_<projectname>')
 else()
 	set(MCU atmega32u4)
 	set(F_CPU 16000000)
@@ -111,7 +111,8 @@ MACRO(POST_PROCESS prog chip port baud)
 		dfu-programmer ${chip} erase &&
 		dfu-programmer ${chip} flash ${HEX_PATH}
 	)
-	ADD_CUSTOM_TARGET(del_${PRJ_NAME} 
+	ADD_CUSTOM_TARGET(clean_${PRJ_NAME} 
+		make clean &&
 		rm ${HEX_PATH}
 	)
 ENDMACRO(POST_PROCESS)

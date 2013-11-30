@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 
-#define TEST 65
+#define TEST 'a'
 void test(char c);
 
 

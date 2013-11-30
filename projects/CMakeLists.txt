@@ -4,12 +4,6 @@ include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/boards/${BOARD
 # Make sure the compiler can find the header files for the 'core' library.
 include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/core)
 
-# Make sure the compiler can find the header files for the 'custom' library.
-include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/Adafruit_MCP23017)
-include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/IRremote)
-include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/MIDI)
-include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/Ping)
-
 # Make sure the compiler can find the header files for the 'default' library.
 include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/default/EEPROM)
 include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/default/Esplora)
@@ -27,9 +21,16 @@ include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/default/WiFi/u
 include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/default/Wire)
 include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/default/Wire/utility)
 
+# Make sure the compiler can find the header files for the 'custom' library.
+include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/Adafruit_MCP23017)
+include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/IRremote)
+include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/MIDI)
+include_directories (${ARDUINO_LIB_SOURCE_DIR}/${ARDUINO_LIB_DIR}/custom/Ping)
+
 # Recurse further into the "project" subdirectories.
 add_subdirectory (blinky)
 add_subdirectory (combined)
+add_subdirectory (i2cslave)
 add_subdirectory (keyboard)
 add_subdirectory (ping)
 add_subdirectory (tinybasic)
